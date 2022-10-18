@@ -1,0 +1,73 @@
+/*
+  Localizable.strings
+  SpaceX
+
+  Created by Александр on 30.08.2022.
+  
+*/
+
+// MARK: Measure
+"Measure.sec" = "sec";
+"Measure.ton" = "ton";
+
+"Measure.m" = "m";
+"Measure.ft" = "ft";
+"Measure.kg" = "kg";
+"Measure.lb" = "lb";
+
+
+// MARK: Rocket Cell
+
+"Rocket.Height" = "Height, ";
+"Rocket.Diameter" = "Diameter, ";
+"Rocket.Weight" = "Weight, ";
+"Rocket.Payload Weight For Leo" = "Payload, ";
+
+
+// MARK: Rocket Row
+
+"Rocket.First Stage" = "FIRST STAGE";
+"Rocket.Secong Stage" = "SECOND STAGE";
+
+
+// MARK: Rocket View
+
+"Rocket.Show Launches" = "Show Launches";
+"Rocket.FirstFlightDateFormat" = "d MMMM, YYYY";
+
+"Rocket.First Flight" = "First Flight";
+"Rocket.Country" = "Country";
+"Rocket.Cost" = "Cost";
+
+"Rocket.Engines" = "Engines";
+"Rocket.Fuel Amount" = "Fuel Amount";
+"Rocket.Burn Time" = "Burn Time";
+
+// MARK: Rocket View Data
+
+"RocketViewData: M" = "M";
+
+// MARK: Launches
+
+"Launches.Back" = "Back";
+"Launches.ItemDateFormat" = "d MMMM, YYYY";
+
+
+// MARK: Settings
+
+"Settings.Back" = "Back";
+"Settings.Settings" = "Settings";
+"Settings.Close" = "Close";
+
+"Settings.Height" = "Height";
+"Settings.Diameter" = "Diameter";
+"Settings.Weight" = "Weight";
+"Settings.Payload Weight For Leo" = "Payload Weight";
+
+// MARK: Error
+"Error.Critical Error" = "Critical Error";
+"Error.Close" = "Close";
+
+// MARK: Countries
+"Republic of the Marshall Islands" = "Marshall Islands";
+"United States" = "USA";

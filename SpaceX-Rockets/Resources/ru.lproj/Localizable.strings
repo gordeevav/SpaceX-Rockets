@@ -1,0 +1,73 @@
+/*
+  Localizable.strings
+  SpaceX
+
+  Created by Александр on 30.08.2022.
+  
+*/
+
+// MARK: Measure
+"Measure.sec" = "сек";
+"Measure.ton" = "т";
+
+"Measure.m" = "м";
+"Measure.ft" = "ft";
+"Measure.kg" = "кг";
+"Measure.lb" = "lb";
+
+
+// MARK: Rocket Cell
+
+"Rocket.Height" = "Высота, ";
+"Rocket.Diameter" = "Диаметр, ";
+"Rocket.Weight" = "Масса, ";
+"Rocket.Payload Weight For Leo" = "Нагрузка, ";
+
+
+// MARK: Rocket Row
+
+"Rocket.First Stage" = "ПЕРВАЯ СТУПЕНЬ";
+"Rocket.Secong Stage" = "ВТОРАЯ СТУПЕНЬ";
+
+
+// MARK: Rocket View
+
+"Rocket.Show Launches" = "Посмотреть запуски";
+"Rocket.FirstFlightDateFormat" = "d MMMM, YYYY";
+
+"Rocket.First Flight" = "Первый полет";
+"Rocket.Country" = "Страна";
+"Rocket.Cost" = "Стоимость запуска";
+
+"Rocket.Engines" = "Количество двигателей";
+"Rocket.Fuel Amount" = "Количество топлива";
+"Rocket.Burn Time" = "Время сгорания";
+  
+// MARK: Rocket View Data
+
+"RocketViewData: M" = "млн";
+
+// MARK: Launches
+
+"Launches.Back" = "Назад";
+"Launches.ItemDateFormat" = "d MMMM, YYYY";
+
+
+// MARK: Settings
+
+"Settings.Back" = "Назад";
+"Settings.Settings" = "Настройки";
+"Settings.Close" = "Закрыть";
+
+"Settings.Height" = "Высота";
+"Settings.Diameter" = "Диаметр";
+"Settings.Weight" = "Масса";
+"Settings.Payload Weight For Leo" = "Полезная нагрузка";
+
+// MARK: Error
+"Error.Critical Error" = "Критическая ошибка";
+"Error.Close" = "Закрыть";
+
+// MARK: Countries
+"Republic of the Marshall Islands" = "Маршалловы Острова";
+"United States" = "США";

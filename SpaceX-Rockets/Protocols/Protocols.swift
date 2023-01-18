@@ -2,7 +2,7 @@
 //  AppProtocols.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 17.10.2022.
+//  Created by Aleksandr Gordeev on 17.10.2022.
 //
 
 import UIKit
@@ -76,45 +76,4 @@ protocol ErrorViewProtocol: AnyObject {
 protocol LoadingViewProtocol: AnyObject {
     var activityIndicatorView: UIActivityIndicatorView { get set }
     var mainView: UIView? { get set }
-}
-
-extension LoadingViewProtocol {
-    func setupLoadingViews(controllerView: UIView, mainView: UIView?) {
-        controllerView.addSubview(activityIndicatorView)
-        
-        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicatorView.sizeToFit()
-        activityIndicatorView.color = .appWhite
-    
-        NSLayoutConstraint.activate([
-            activityIndicatorView.centerXAnchor.constraint(equalTo: controllerView.centerXAnchor),
-            activityIndicatorView.centerYAnchor.constraint(equalTo: controllerView.centerYAnchor),
-            activityIndicatorView.widthAnchor.constraint(
-                equalToConstant: activityIndicatorView.frame.width
-            ),
-            activityIndicatorView.heightAnchor.constraint(
-                equalToConstant: activityIndicatorView.frame.height
-            )
-        ])
-                
-        self.mainView = mainView
-    }
-    
-    func showLoading() {
-        activityIndicatorView.isHidden = false
-        activityIndicatorView.startAnimating()
-        
-        if let mainView = mainView {
-            mainView.isHidden = true
-        }
-    }
-    
-    func hideLoading() {
-        activityIndicatorView.stopAnimating()
-        activityIndicatorView.isHidden = true
-        
-        if let mainView = mainView {
-            mainView.isHidden = false
-        }
-    }
 }

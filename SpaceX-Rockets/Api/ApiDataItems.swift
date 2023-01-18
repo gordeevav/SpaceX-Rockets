@@ -2,7 +2,7 @@
 //  ApiDataItems.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 17.08.2022.
+//  Created by Aleksandr Gordeev on 17.08.2022.
 //
 
 import Foundation
@@ -70,8 +70,4 @@ struct LaunchesApiData: Decodable {
     let success: Bool?
     let name: String?
     let dateUnix: Int?
-    
-    var date: String {
-        Formatter.localizedDateString(dateUnix: dateUnix ?? 0)
-    }
 }

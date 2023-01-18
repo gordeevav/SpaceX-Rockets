@@ -57,21 +57,21 @@ final class RocketCellRegistration {
     private let rowValueRegularCellRegistration = RocketItemCellRegistration { cell, _, value in
         cell.label.text = value
         cell.label.textColor = .appWhite
-        cell.label.font = .labGrotesqueFontRegular(ofSize: 16)
+        cell.label.font = .labGrotesqueFontRegular(ofSize: 14)
         cell.label.textAlignment = .right
     }
     
     private let rowValueBoldCellRegistration = RocketItemCellRegistration { cell, _, value in
         cell.label.text = value
         cell.label.textColor = .appWhite
-        cell.label.font = .labGrotesqueFontBold(ofSize: 16)
+        cell.label.font = .labGrotesqueFontBold(ofSize: 14)
         cell.label.textAlignment = .right
     }
     
     private let rowMeasureCellRegistration = RocketItemCellRegistration { cell, _, value in
         cell.label.text = value
         cell.label.textColor = .appGray
-        cell.label.font = .labGrotesqueFontRegular(ofSize: 16)
+        cell.label.font = .labGrotesqueFontRegular(ofSize: 14)
         cell.label.textAlignment = .right
     }
     

@@ -2,7 +2,7 @@
 //  ApiService.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 24.08.2022.
+//  Created by Aleksandr Gordeev on 24.08.2022.
 //
 
 import UIKit
@@ -17,11 +17,9 @@ protocol ApiServiceProtocol {
 // MARK: ApiService
 final class ApiService: ApiServiceProtocol {
     
-    private let jsonDecoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        return decoder
-    }()
+    private let jsonDecoder = JSONDecoder() .. {
+        $0.keyDecodingStrategy = .convertFromSnakeCase
+    }
     
     public func loadRocketData(completion: @escaping (Result<[RocketApiData]?, Error>) -> Void) {
         loadDecodable(endpoint: .rockets, completion: completion)

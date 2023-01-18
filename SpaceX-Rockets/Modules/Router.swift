@@ -2,7 +2,7 @@
 //  Router.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 24.08.2022.
+//  Created by Aleksandr Gordeev on 24.08.2022.
 //
 
 import UIKit
@@ -18,11 +18,14 @@ final class Router: RouterProtocol {
         self.moduleBuilder = assemblyBuilder
     }
     
+    // MARK: - Main
     func initialViewContoller() {
         let mainViewController = moduleBuilder.rocketModule(router: self)
         navigationController.viewControllers = [mainViewController]
     }
     
+    
+    // MARK: - Launches
     func showLaunches(rocketId: String, rocketName: String) {
         let viewController = moduleBuilder.launchesModule(rocketId: rocketId, rocketName: rocketName, router: self)
         navigationController.show(viewController, sender: nil)
@@ -32,6 +35,7 @@ final class Router: RouterProtocol {
         navigationController.popToRootViewController(animated: true)
     }
     
+    // MARK: - Settings
     func showSettings() {
         let settingsViewController = moduleBuilder.settingsModule(router: self)
         navigationController.present(settingsViewController, animated: true)
@@ -41,6 +45,7 @@ final class Router: RouterProtocol {
         navigationController.dismiss(animated: true)
     }
 
+    // MARK: - Error
     func showError(error: Error) {
         let errorViewController = moduleBuilder.errorModule(error: error, router: self)
         navigationController.popToRootViewController(animated: false)

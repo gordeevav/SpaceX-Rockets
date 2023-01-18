@@ -2,7 +2,7 @@
 //  RocketButttonCell.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 26.09.2022.
+//  Created by Aleksandr Gordeev on 26.09.2022.
 //
 
 import UIKit
@@ -14,29 +14,15 @@ final class PassableButton: UIButton {
 // MARK: RocketButtonCell
 final class RocketButtonCell: UICollectionViewCell {
     
-    let button = PassableButton()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupUI()
-    }
-    
-    private func setupUI() {
-        backgroundColor = .clear
-        
-        addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
+    public lazy var button = PassableButton() .. {
+        addSubview($0)
+        $0.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: topAnchor),
-            button.bottomAnchor.constraint(equalTo: bottomAnchor),
-            button.leftAnchor.constraint(equalTo: leftAnchor),
-            button.rightAnchor.constraint(equalTo: rightAnchor)
+            $0.topAnchor.constraint(equalTo: topAnchor),
+            $0.bottomAnchor.constraint(equalTo: bottomAnchor),
+            $0.leftAnchor.constraint(equalTo: leftAnchor),
+            $0.rightAnchor.constraint(equalTo: rightAnchor)
         ])
     }
 }

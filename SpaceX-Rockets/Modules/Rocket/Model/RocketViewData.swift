@@ -2,7 +2,7 @@
 //  RocketViewData.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 30.08.2022.
+//  Created by Aleksandr Gordeev on 30.08.2022.
 //
 
 import UIKit
@@ -12,6 +12,8 @@ typealias RocketViewDataSource = UICollectionViewDiffableDataSource<RocketViewSe
 
 // MARK: RocketViewData
 final class RocketViewData {
+    private let numberFormatter: RocketNumberFormatter
+    private let dateFormatter: RocketDateFormatter
         
     private let placeholderImage = UIImage(named: "rocket")
     private let rocketApiData: RocketApiData
@@ -24,8 +26,10 @@ final class RocketViewData {
         return imageUrls[randomIndex]
     }
     
-    init(rocketApiData: RocketApiData) {
-        self.rocketApiData = rocketApiData
+    init(apiData: RocketApiData, numberFormatter: RocketNumberFormatter, dateFormatter: RocketDateFormatter) {
+        self.rocketApiData = apiData
+        self.numberFormatter = numberFormatter
+        self.dateFormatter = dateFormatter
     }
 }
 
@@ -57,39 +61,29 @@ extension RocketViewData {
         return snapshot
     }
     
-    public func makeRocketPropertyItems(settingsData: SettingsData) -> [RocketViewDataItem] {
-        return [
-            RocketViewDataItem(.property(
-                NSLocalizedString("Rocket.Height", comment: "") + " " + settingsData.height.textForRocketPropertyCell,
-                Formatter.numberFormat(
-                    from: rocketApiData.height?.value(measure: settingsData.height) ?? 0
-                )
-            )),
-            RocketViewDataItem(.property(
-                NSLocalizedString("Rocket.Diameter", comment: "") + " " + settingsData.diameter.textForRocketPropertyCell,
-                Formatter.numberFormat(
-                    from: rocketApiData.diameter?.value(measure: settingsData.diameter) ?? 0
-                )
-            )),
-            RocketViewDataItem(.property(
-                NSLocalizedString("Rocket.Weight", comment: "") + " " + settingsData.weight.textForRocketPropertyCell,
-                Formatter.numberFormat(
-                    from: Double(rocketApiData.mass?.value(measure: settingsData.weight) ?? 0)
-                )
-            )),
-            RocketViewDataItem(.property(
-                NSLocalizedString("Rocket.Payload Weight For Leo", comment: "") + " " +
-                settingsData.payload.textForRocketPropertyCell,
-                Formatter.numberFormat(
-                    from: Double(rocketApiData.payload?.value(measure: settingsData.payload) ?? 0)
-                )
-            ))
-        ]
-    }
+    public func makeRocketPropertyItems(settingsData: SettingsData) -> [RocketViewDataItem] {[
+        RocketViewDataItem(.property(
+            NSLocalizedString("Rocket.Height", comment: "") + " " + settingsData.height.textForRocketPropertyCell,
+            numberFormatter.string(from: rocketApiData.height?.value(measure: settingsData.height) ?? 0)
+        )),
+        RocketViewDataItem(.property(
+            NSLocalizedString("Rocket.Diameter", comment: "") + " " + settingsData.diameter.textForRocketPropertyCell,
+            numberFormatter.string(from: rocketApiData.diameter?.value(measure: settingsData.diameter) ?? 0)
+        )),
+        RocketViewDataItem(.property(
+            NSLocalizedString("Rocket.Weight", comment: "") + " " + settingsData.weight.textForRocketPropertyCell,
+            numberFormatter.string(from: Double(rocketApiData.mass?.value(measure: settingsData.weight) ?? 0))
+        )),
+        RocketViewDataItem(.property(
+            NSLocalizedString("Rocket.Payload Weight For Leo", comment: "") + " " +
+            settingsData.payload.textForRocketPropertyCell,
+            numberFormatter.string(from: Double(rocketApiData.payload?.value(measure: settingsData.payload) ?? 0))
+        ))
+    ]}
     
     public func makeFirstFlightItems() -> [RocketViewDataItem] {[
         RocketViewDataItem(.rowTitle(NSLocalizedString("Rocket.First Flight", comment: ""))),
-        RocketViewDataItem(.rowValueRegular(Formatter.getFirstFligthFormattedString(from: rocketApiData.firstFlight ?? ""))),
+        RocketViewDataItem(.rowValueRegular(dateFormatter.firstFlightString(from: rocketApiData.firstFlight ?? ""))),
 
         RocketViewDataItem(.rowTitle(NSLocalizedString("Rocket.Country", comment: ""))),
         RocketViewDataItem(.rowValueRegular(NSLocalizedString(rocketApiData.country ?? "", comment: ""))),
@@ -116,7 +110,7 @@ extension RocketViewData {
 // MARK: Calc Methods
 extension RocketViewData {
     private func costStringInMillions(from value: Double) -> String {
-        let numberString = Formatter.numberFormat(from: Double(rocketApiData.costPerLaunch ?? 0) / 1000000)
+        let numberString = numberFormatter.string(from: Double(rocketApiData.costPerLaunch ?? 0) / 1_000_000)
         let millionString = NSLocalizedString("RocketViewData: M", comment: "")
         return "$ \(numberString) \(millionString)"
     }

@@ -26,9 +26,9 @@ final class RocketCellRegistration {
         UICollectionView.CellRegistration<RocketButtonCell, (rocketId: String, rocketName: String)>!
     
     private let imageCellRegistration =
-        UICollectionView.CellRegistration<RocketImageCell, UIImage?> { cell, _, image in
+        UICollectionView.CellRegistration<RocketImageCell, (String, UIImage?)> {cell, _, imageData in
             
-        cell.setImage(image)
+        cell.setImage(imageData.0, placeholder: imageData.1)
         cell.backgroundColor = .clear
         cell.clipsToBounds = true
     }
@@ -94,9 +94,7 @@ final class RocketCellRegistration {
     
     init(buttonDelegate: RocketButtonsDelegateProtocol) {
         self.buttonDelegate = buttonDelegate
-    }
-    
-    func setup() {
+        
         settingsButtonCellRegistration = .init { [weak self] cell, _, _ in
             guard let self = self else { return }
             
@@ -131,9 +129,9 @@ final class RocketCellRegistration {
     ) -> UICollectionViewCell {
         
         switch item.data {
-        case .image(let image):
+        case .image(let imageUrl, let image):
             return collectionView.dequeueConfiguredReusableCell(
-                using: imageCellRegistration, for: indexPath, item: image
+                using: imageCellRegistration, for: indexPath, item: (imageUrl, image)
             )
         case .rocketTitle(let value):
             return collectionView.dequeueConfiguredReusableCell(

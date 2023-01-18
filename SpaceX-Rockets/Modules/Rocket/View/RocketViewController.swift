@@ -48,7 +48,6 @@ private extension RocketViewController {
     
     func setupCellRegistration() {
         rocketCellRegistration = RocketCellRegistration(buttonDelegate: self)
-        rocketCellRegistration.setup()
     }
     
     func setupCollectionView() {

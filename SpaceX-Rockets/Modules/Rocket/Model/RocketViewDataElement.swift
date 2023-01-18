@@ -9,7 +9,7 @@ import UIKit
 
 enum RocketViewDataElement: Hashable {
         
-    case image(UIImage?)
+    case image(String, UIImage?)
     case rocketTitle(String)
     case settingsButton
     case property(String, String)
@@ -23,7 +23,8 @@ enum RocketViewDataElement: Hashable {
     
     static func == (lhs: Self, rhs: Self) -> Bool {
         switch (lhs, rhs) {
-        case let (.image(first), .image(second)): return first == second
+        case let (.image(firstPath, firstImage), .image(secondPath, secondImage)):
+            return (firstPath == secondPath) && (firstImage == secondImage)
         case let (.rocketTitle(first), .rocketTitle(second)): return first == second
         case (.settingsButton, .settingsButton): return true
         case let (.property(firstValue, firstMeasure), .property(secondValue, secondMeasure)):

@@ -13,10 +13,8 @@ final class RocketPresenter {
     private let view: RocketViewProtocol
     private let router: RouterProtocol
     
-    private let networkApiService: ApiServiceProtocol
-    
+    private let networkApiService: ApiServiceProtocol    
     private var rocketViewDataArray = [RocketViewData]()
-    private var rocketImages = [String: UIImage]()
     
     init(view: RocketViewProtocol, networkApiService: ApiServiceProtocol, router: RouterProtocol) {
         self.view = view
@@ -28,12 +26,6 @@ final class RocketPresenter {
             name: NSNotification.Name(SettingsData.settingsDidChange),
             object: nil
         )
-    }
-    
-    public func setImage(rocketId: String, image: UIImage?) {
-        guard let rocketViewData = rocketViewDataArray.first(where: { $0.rocketId == rocketId })
-        else { return }
-        rocketViewData.rocketImage = image
     }
     
     @objc public func applySettings() {
@@ -72,38 +64,11 @@ extension RocketPresenter {
                             RocketViewData(apiData: $0, numberFormatter: numberFormatter, dateFormatter: dateFormatter)
                         }
                         self?.applySettings()
-                        self?.startLoadingImages()
                     }
                 case .failure(let error):
                     switch error {
                     case ApiError.emptyImageData, ApiError.emptyLaunchesData, ApiError.emptyRocketData: return
                     default: self?.router.showError(error: error)
-                    }
-                }
-            }
-        }
-    }
-    
-    public func startLoadingImages() {
-        rocketViewDataArray.forEach { rocketViewData in
-            let randomImageUrl = rocketViewData.randomImageUrl
-            if rocketViewData.rocketId.isEmpty || randomImageUrl.isEmpty {
-                return
-            }
-                    
-            
-            networkApiService.loadImage(urlPath: randomImageUrl) { [weak self] imageResult in
-                guard let self = self else { return }
-                
-                DispatchQueue.main.async {
-                    switch imageResult {
-                    case .success(let image):
-                        if let image = image {
-                            self.setImage(rocketId: rocketViewData.rocketId, image: image)
-                            self.applySettings()
-                        }
-                    case .failure(let error):
-                        self.router.showError(error: error)
                     }
                 }
             }

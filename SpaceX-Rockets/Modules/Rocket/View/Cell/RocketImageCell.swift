@@ -37,7 +37,7 @@ final class RocketImageCell: UICollectionViewCell {
         ])
     }
     
-    public func setImage(_ image: UIImage?) {
-        imageView.image = image
+    public func setImage(_ imageUrl: String, placeholder: UIImage?) {
+        imageView.loadAsync(from: imageUrl, placeholder: placeholder)
     }
 }

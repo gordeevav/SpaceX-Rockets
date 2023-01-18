@@ -14,11 +14,10 @@ typealias RocketViewDataSource = UICollectionViewDiffableDataSource<RocketViewSe
 final class RocketViewData {
     private let numberFormatter: RocketNumberFormatter
     private let dateFormatter: RocketDateFormatter
-        
-    private let placeholderImage = UIImage(named: "rocket")
+            
     private let rocketApiData: RocketApiData
+    private let placeholderImage = UIImage(named: "rocket")
     
-    public var rocketImage: UIImage?
     public var rocketId: String { return rocketApiData.id ?? "" }
     public var randomImageUrl: String {
         guard let imageUrls = rocketApiData.flickrImages, imageUrls.count > 0 else { return "" }
@@ -41,7 +40,7 @@ extension RocketViewData {
         
         snapshot.appendSections([.image, .rocketTitle, .properties, .firstFlight, .firstStage, .secondStage, .launchButton])
         
-        snapshot.appendItems([RocketViewDataItem(.image(rocketImage ?? placeholderImage))], toSection: .image)
+        snapshot.appendItems([RocketViewDataItem(.image(randomImageUrl, placeholderImage))], toSection: .image)
         snapshot.appendItems([
             RocketViewDataItem(.rocketTitle(rocketApiData.name ?? "")),
             RocketViewDataItem(.settingsButton)

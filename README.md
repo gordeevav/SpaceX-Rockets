@@ -20,11 +20,11 @@ The rocket data is loaded from SpaceX server.
 ## Screenshots
 
 <div>
-<img src="/ScreenShots/1.png" alt="Rocket 1" width="200"/>
-<img src="/ScreenShots/2.png" alt="Rocket 2" width="200"/>
-<img src="/ScreenShots/3.png" alt="Rocket 3" width="200"/>
-<img src="/ScreenShots/4.png" alt="Launches" width="200"/>
-<img src="/ScreenShots/5.png" alt="Settings" width="200"/>
+<img src="/Screenshots/1.png" alt="Rocket 1" width="200"/>
+<img src="/Screenshots/2.png" alt="Rocket 2" width="200"/>
+<img src="/Screenshots/3.png" alt="Rocket 3" width="200"/>
+<img src="/Screenshots/4.png" alt="Launches" width="200"/>
+<img src="/Screenshots/5.png" alt="Settings" width="200"/>
 </div>
 
 ## Contacts

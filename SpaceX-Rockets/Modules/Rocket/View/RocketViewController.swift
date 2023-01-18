@@ -10,51 +10,13 @@ import UIKit
 // MARK: RocketDataViewController
 final class RocketViewController: UIViewController {
     
-    private var collectionView: UICollectionView!
     private var rocketCellRegistration: RocketCellRegistration!
-    private var dataSource: RocketViewDataSource?
-    private var snapshot: RocketViewDataSnapshot?
     
-    var rocketButtonsDelegate: RocketButtonsDelegateProtocol?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupView()
-        setupCellRegistration()
-        setupCollectionView()
-        setupDataSource()
-        
-        showSnapshot()
-    }
-    
-    func setSnapshot(_ snapshot: RocketViewDataSnapshot) {
-        self.snapshot = snapshot
-        showSnapshot()
-    }
-    
-    private func showSnapshot() {
-        guard let snapshot = self.snapshot else { return }
-        dataSource?.applySnapshotUsingReloadData(snapshot)
-    }
-}
-
-// MARK: Setup
-private extension RocketViewController {
-    
-    func setupView() {
-        view.backgroundColor = .appBlack
-    }
-    
-    func setupCellRegistration() {
-        rocketCellRegistration = RocketCellRegistration(buttonDelegate: self)
-    }
-    
-    func setupCollectionView() {
+    private lazy var collectionView: UICollectionView = {
         let layoutFactory = RocketLayout()
         let collectionViewLayout = layoutFactory.makeLayout()
         
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsVerticalScrollIndicator = false
@@ -67,10 +29,12 @@ private extension RocketViewController {
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
-    }
-    
-    private func setupDataSource() {
-        dataSource = RocketViewDataSource(collectionView: collectionView) {
+        
+        return collectionView
+    }()
+
+    private lazy var dataSource: RocketViewDataSource? = {
+        let dataSource = RocketViewDataSource(collectionView: collectionView) {
             [weak self] collectionView, indexPath, rocketItem in
                 
             guard let rocketSection = RocketViewSection(rawValue: indexPath.section)
@@ -80,13 +44,31 @@ private extension RocketViewController {
                                  indexPath: indexPath, item: rocketItem)
         }
         
-        dataSource?.supplementaryViewProvider = { [weak self] collectionView, _, indexPath in
+        dataSource.supplementaryViewProvider = { [weak self] collectionView, _, indexPath in
             guard let sectionHeaderCellRegistration = self?.rocketCellRegistration.stageHeaderCellRegistration
             else { return UICollectionViewCell() }
             
             return collectionView.dequeueConfiguredReusableSupplementary(
                 using: sectionHeaderCellRegistration, for: indexPath)
         }
+        
+        return dataSource
+    }()
+    
+    public var rocketButtonsDelegate: RocketButtonsDelegateProtocol?
+    
+    public var snapshot: RocketViewDataSnapshot? {
+        didSet {
+            guard let snapshot = self.snapshot else { return }
+            dataSource?.applySnapshotUsingReloadData(snapshot)
+        }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        rocketCellRegistration = RocketCellRegistration(buttonDelegate: self)
+        view.backgroundColor = .appBlack
     }
 }
 

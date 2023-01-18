@@ -15,7 +15,7 @@ final class RocketsViewDataSource: NSObject, UIPageViewControllerDataSource {
     public func initControllersFrom(snapshots: [RocketViewDataSnapshot], rocketButtonsDelegate: RocketButtonsDelegateProtocol) {
         controllers = snapshots.map { snapshot in
             RocketViewController() .. {
-                $0.setSnapshot(snapshot)
+                $0.snapshot = snapshot
                 $0.rocketButtonsDelegate = rocketButtonsDelegate
             }
         }

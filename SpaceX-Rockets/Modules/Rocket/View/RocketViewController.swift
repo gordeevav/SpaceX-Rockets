@@ -13,7 +13,7 @@ final class RocketViewController: UIViewController {
     private var rocketCellRegistration: RocketCellRegistration!
     
     private lazy var collectionView: UICollectionView = {
-        let layoutFactory = RocketLayout()
+        let layoutFactory = RocketLayoutFactory()
         let collectionViewLayout = layoutFactory.makeLayout()
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)

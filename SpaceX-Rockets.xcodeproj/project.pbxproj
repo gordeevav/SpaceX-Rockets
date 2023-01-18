@@ -21,7 +21,7 @@
 		E12615FC28FDEE0900CFAF06 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12615FB28FDEE0900CFAF06 /* Router.swift */; };
 		E12615FE28FDEE1400CFAF06 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12615FD28FDEE1400CFAF06 /* ModuleBuilder.swift */; };
 		E126160028FDEE1F00CFAF06 /* RocketPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12615FF28FDEE1F00CFAF06 /* RocketPresenter.swift */; };
-		E126160528FDEE4700CFAF06 /* RocketLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126160428FDEE4700CFAF06 /* RocketLayout.swift */; };
+		E126160528FDEE4700CFAF06 /* RocketLayoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126160428FDEE4700CFAF06 /* RocketLayoutFactory.swift */; };
 		E126160728FDEE5100CFAF06 /* RocketCellRagistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126160628FDEE5100CFAF06 /* RocketCellRagistration.swift */; };
 		E126160928FDEE5C00CFAF06 /* RocketImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126160828FDEE5C00CFAF06 /* RocketImageCell.swift */; };
 		E126160B28FDEE6500CFAF06 /* RocketPropertyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126160A28FDEE6500CFAF06 /* RocketPropertyCell.swift */; };
@@ -72,7 +72,7 @@
 		E12615FB28FDEE0900CFAF06 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		E12615FD28FDEE1400CFAF06 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		E12615FF28FDEE1F00CFAF06 /* RocketPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketPresenter.swift; sourceTree = "<group>"; };
-		E126160428FDEE4700CFAF06 /* RocketLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketLayout.swift; sourceTree = "<group>"; };
+		E126160428FDEE4700CFAF06 /* RocketLayoutFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketLayoutFactory.swift; sourceTree = "<group>"; };
 		E126160628FDEE5100CFAF06 /* RocketCellRagistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketCellRagistration.swift; sourceTree = "<group>"; };
 		E126160828FDEE5C00CFAF06 /* RocketImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketImageCell.swift; sourceTree = "<group>"; };
 		E126160A28FDEE6500CFAF06 /* RocketPropertyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketPropertyCell.swift; sourceTree = "<group>"; };
@@ -264,7 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				E126160628FDEE5100CFAF06 /* RocketCellRagistration.swift */,
-				E126160428FDEE4700CFAF06 /* RocketLayout.swift */,
+				E126160428FDEE4700CFAF06 /* RocketLayoutFactory.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -418,7 +418,7 @@
 				E126161128FDEE9200CFAF06 /* RocketsViewController.swift in Sources */,
 				E126160028FDEE1F00CFAF06 /* RocketPresenter.swift in Sources */,
 				E12615F228FDE1BB00CFAF06 /* RocketNumberFormatter.swift in Sources */,
-				E126160528FDEE4700CFAF06 /* RocketLayout.swift in Sources */,
+				E126160528FDEE4700CFAF06 /* RocketLayoutFactory.swift in Sources */,
 				E126160D28FDEE6C00CFAF06 /* RocketTextCell.swift in Sources */,
 				E126162F28FDEF2C00CFAF06 /* SettingsData.swift in Sources */,
 				E126161928FDEEB800CFAF06 /* RocketViewDataItem.swift in Sources */,

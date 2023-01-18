@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct RocketLayout {
+struct RocketLayoutFactory {
     
     struct Const {
         static let mainLeftMargin: CGFloat = 32

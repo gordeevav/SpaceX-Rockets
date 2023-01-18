@@ -2,7 +2,7 @@
 //  SettingsRow.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 07.09.2022.
+//  Created by Aleksandr Gordeev on 07.09.2022.
 //
 
 import UIKit
@@ -12,8 +12,31 @@ final class SettingsRow: UITableViewCell {
     
     static let cellId = "SettingsRow"
     
-    private var titleLabel = UILabel()
-    private var segmentControl = UISegmentedControl()
+    private lazy var titleLabel = UILabel() .. {
+        contentView.addSubview($0)
+        
+        $0.textColor = .appLightGray
+        $0.font = UIFont.labGrotesqueFontRegular(ofSize: 16)
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private lazy var segmentControl = UISegmentedControl() .. {
+        contentView.addSubview($0)
+        
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = .appDarkGray
+        $0.selectedSegmentTintColor = .appWhite
+        $0.setTitleTextAttributes(
+            [.foregroundColor: UIColor.appGray],
+            for: .normal
+        )
+        $0.setTitleTextAttributes(
+            [.foregroundColor: UIColor.appBlack],
+            for: .selected
+        )
+        
+        $0.addTarget(self, action: #selector(segmentControlValueChanged), for: .valueChanged)
+    }
     
     var onSelect: ((Int) -> Void)?
         
@@ -27,7 +50,7 @@ final class SettingsRow: UITableViewCell {
         setupUI()
     }
 
-    func configure(title: String, values: [String], selectedIndex: Int) {
+    public func configure(title: String, values: [String], selectedIndex: Int) {
         titleLabel.text = title
         segmentControl.setItems(values)
         segmentControl.selectedSegmentIndex = selectedIndex
@@ -42,36 +65,6 @@ extension SettingsRow {
     private func setupUI() {
         backgroundColor = .clear
         selectionStyle = .none
-        
-        setupTitleLabel()
-        setupSegmentControl()
-    }
-    
-    private func setupTitleLabel() {
-        contentView.addSubview(titleLabel)
-        
-        titleLabel.textColor = .appLightGray
-        titleLabel.font = UIFont.labGrotesqueFontRegular(ofSize: 16)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    private func setupSegmentControl() {
-        
-        contentView.addSubview(segmentControl)
-        
-        segmentControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentControl.backgroundColor = .appDarkGray
-        segmentControl.selectedSegmentTintColor = .appWhite
-        segmentControl.setTitleTextAttributes(
-            [.foregroundColor: UIColor.appGray],
-            for: .normal
-        )
-        segmentControl.setTitleTextAttributes(
-            [.foregroundColor: UIColor.appBlack],
-            for: .selected
-        )
-        
-        segmentControl.addTarget(self, action: #selector(segmentControlValueChanged), for: .valueChanged)
     }
     
     @objc func segmentControlValueChanged() {

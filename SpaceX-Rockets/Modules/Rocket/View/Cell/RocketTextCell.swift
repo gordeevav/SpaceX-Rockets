@@ -2,7 +2,7 @@
 //  RocketTextCell.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 26.09.2022.
+//  Created by Aleksandr Gordeev on 26.09.2022.
 //
 
 import UIKit
@@ -10,30 +10,16 @@ import UIKit
 // MARK: RocketTextCell
 final class RocketTextCell: UICollectionViewCell {
     
-    let label = UILabel()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupUI()
-    }
-    
-    private func setupUI() {
-        backgroundColor = .clear
-        
-        addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 2
+    public lazy var label = UILabel() .. {
+        addSubview($0)
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.numberOfLines = 2
         
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: topAnchor),
-            label.bottomAnchor.constraint(equalTo: bottomAnchor),
-            label.leftAnchor.constraint(equalTo: leftAnchor),
-            label.rightAnchor.constraint(equalTo: rightAnchor)
+            $0.topAnchor.constraint(equalTo: topAnchor),
+            $0.bottomAnchor.constraint(equalTo: bottomAnchor),
+            $0.leftAnchor.constraint(equalTo: leftAnchor),
+            $0.rightAnchor.constraint(equalTo: rightAnchor)
         ])
     }
 }

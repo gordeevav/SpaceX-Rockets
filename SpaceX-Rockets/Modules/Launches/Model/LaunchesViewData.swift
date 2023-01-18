@@ -2,7 +2,7 @@
 //  LaunchesViewData.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 25.08.2022.
+//  Created by Aleksandr Gordeev on 25.08.2022.
 //
 
 import UIKit
@@ -13,9 +13,9 @@ struct LaunchesItem {
     let date: String
     let isSuccess: Bool
     
-    init(launcesApiData: LaunchesApiData) {
+    init(launcesApiData: LaunchesApiData, dateFormatter: RocketDateFormatter) {
         title = launcesApiData.name ?? "-/-"
-        date = launcesApiData.date
+        date = dateFormatter.localizedDateString(dateUnix: launcesApiData.dateUnix ?? 0)
         isSuccess = launcesApiData.success ?? false
     }
 }
@@ -28,6 +28,10 @@ struct LaunchesViewData {
     
     init(rocketName: String, launcesApiData: [LaunchesApiData]) {
         self.rocketName = rocketName
-        launches = launcesApiData.map { LaunchesItem(launcesApiData: $0) }
+        
+        let dateFormatter = RocketDateFormatter()
+        launches = launcesApiData.map {
+            LaunchesItem(launcesApiData: $0, dateFormatter: dateFormatter)        
+        }
     }
 }

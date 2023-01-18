@@ -2,13 +2,13 @@
 //  RocketDataViewController.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 08.09.2022.
+//  Created by Aleksandr Gordeev on 08.09.2022.
 //
 
 import UIKit
 
 // MARK: RocketDataViewController
-final class RocketDataViewController: UIViewController {
+final class RocketViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     private var rocketCellRegistration: RocketCellRegistration!
@@ -40,7 +40,7 @@ final class RocketDataViewController: UIViewController {
 }
 
 // MARK: Setup
-private extension RocketDataViewController {
+private extension RocketViewController {
     
     func setupView() {
         view.backgroundColor = .appBlack
@@ -92,7 +92,7 @@ private extension RocketDataViewController {
 }
 
 // MARK: RocketButtonsDelegateProtocol
-extension RocketDataViewController: RocketButtonsDelegateProtocol {
+extension RocketViewController: RocketButtonsDelegateProtocol {
     
     func settingsButtonDidPress() {
         rocketButtonsDelegate?.settingsButtonDidPress()

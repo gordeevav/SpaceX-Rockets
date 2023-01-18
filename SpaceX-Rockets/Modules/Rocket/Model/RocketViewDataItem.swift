@@ -2,7 +2,7 @@
 //  RocketViewDataItem.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 17.10.2022.
+//  Created by Aleksandr Gordeev on 17.10.2022.
 //
 
 import Foundation

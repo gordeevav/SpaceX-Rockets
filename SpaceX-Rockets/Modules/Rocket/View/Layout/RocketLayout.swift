@@ -2,7 +2,7 @@
 //  RocketLayout.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 13.09.2022.
+//  Created by Aleksandr Gordeev on 13.09.2022.
 //
 
 import UIKit

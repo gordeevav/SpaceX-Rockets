@@ -2,7 +2,7 @@
 //  SettingsData.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 13.10.2022.
+//  Created by Aleksandr Gordeev on 13.10.2022.
 //
 
 import Foundation
@@ -43,10 +43,14 @@ enum SettingsFields: Int {
 
     var rowTitle: String {
         switch self {
-        case .height:               return NSLocalizedString("Settings.Height", comment: "")
-        case .diameter:             return NSLocalizedString("Settings.Diameter", comment: "")
-        case .weight:               return NSLocalizedString("Settings.Weight", comment: "")
-        case .payloadWeightForLeo:  return NSLocalizedString("Settings.Payload Weight For Leo", comment: "")
+        case .height:
+            return NSLocalizedString("Settings.Height", comment: "")
+        case .diameter:
+            return NSLocalizedString("Settings.Diameter", comment: "")
+        case .weight:
+            return NSLocalizedString("Settings.Weight", comment: "")
+        case .payloadWeightForLeo:
+            return NSLocalizedString("Settings.Payload Weight For Leo", comment: "")
         }
     }
 }

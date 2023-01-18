@@ -2,7 +2,7 @@
 //  RocketCellRagistration.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 13.09.2022.
+//  Created by Aleksandr Gordeev on 13.09.2022.
 //
 
 import UIKit
@@ -29,11 +29,13 @@ final class RocketCellRegistration {
         UICollectionView.CellRegistration<RocketImageCell, UIImage?> { cell, _, image in
             
         cell.setImage(image)
+        cell.backgroundColor = .clear
+        cell.clipsToBounds = true
     }
     
     private let rocketHeaderCellRegistration =
         UICollectionView.CellRegistration<RocketTextCell, String> { cell, _, value in
-            
+                        
         cell.label.text = value
         cell.label.textColor = .appWhite
         cell.label.font = .labGrotesqueFontRegular(ofSize: 20)
@@ -42,6 +44,8 @@ final class RocketCellRegistration {
     private let propertyCellRegistration =
         UICollectionView.CellRegistration<RocketPropertyCell, (value: String, measure: String)> { cell, _, data in
             cell.configure(valueText: data.value, measureText: data.measure)
+            cell.backgroundColor = .appDarkGray
+            cell.layer.cornerRadius = 25
     }
     
     private let rowTitleCellRegistration = RocketItemCellRegistration { cell, _, value in
@@ -97,6 +101,7 @@ final class RocketCellRegistration {
             guard let self = self else { return }
             
             let settingsButtonConfig = UIImage.SymbolConfiguration(pointSize: 32)
+            
             let button = cell.button
             
             button.setImage(UIImage(systemName: "gearshape", withConfiguration: settingsButtonConfig), for: .normal)

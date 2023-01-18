@@ -2,7 +2,7 @@
 //  RocketPresenter.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 18.08.2022.
+//  Created by Aleksandr Gordeev on 18.08.2022.
 //
 
 import UIKit
@@ -60,12 +60,17 @@ extension RocketPresenter {
     public func startLoadingRocketData() {
         view.showLoading()
         
+        let numberFormatter = RocketNumberFormatter()
+        let dateFormatter = RocketDateFormatter()
+        
         networkApiService.loadRocketData { [weak self] rocketDataApiResult in
             DispatchQueue.main.async {
                 switch rocketDataApiResult {
                 case .success(let rocketNetworkDataArray):
                     if let rocketNetworkDataArray = rocketNetworkDataArray {
-                        self?.rocketViewDataArray = rocketNetworkDataArray.map { RocketViewData(rocketApiData: $0) }
+                        self?.rocketViewDataArray = rocketNetworkDataArray.map {
+                            RocketViewData(apiData: $0, numberFormatter: numberFormatter, dateFormatter: dateFormatter)
+                        }
                         self?.applySettings()
                         self?.startLoadingImages()
                     }
@@ -85,7 +90,8 @@ extension RocketPresenter {
             if rocketViewData.rocketId.isEmpty || randomImageUrl.isEmpty {
                 return
             }
-                        
+                    
+            
             networkApiService.loadImage(urlPath: randomImageUrl) { [weak self] imageResult in
                 guard let self = self else { return }
                 

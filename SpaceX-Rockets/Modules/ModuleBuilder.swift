@@ -2,7 +2,7 @@
 //  ModuleBuilder.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 22.08.2022.
+//  Created by Aleksandr Gordeev on 22.08.2022.
 //
 
 import UIKit
@@ -14,7 +14,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
     
     // MARK: - rocketModule
     func rocketModule(router: RouterProtocol) -> UIViewController {
-        let view = RocketPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        let view = RocketsViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
         let presenter = RocketPresenter(view: view, networkApiService: apiService, router: router)
         
         view.presenter = presenter

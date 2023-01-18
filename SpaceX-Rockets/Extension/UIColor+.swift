@@ -2,7 +2,7 @@
 //  UIColor+.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 05.09.2022.
+//  Created by Aleksandr Gordeev on 05.09.2022.
 //
 
 import UIKit

@@ -2,7 +2,7 @@
 //  SettingsMeasurement.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 07.09.2022.
+//  Created by Aleksandr Gordeev on 07.09.2022.
 //
 
 import Foundation

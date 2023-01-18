@@ -2,7 +2,7 @@
 //  LaunchesPresenter.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 25.08.2022.
+//  Created by Aleksandr Gordeev on 25.08.2022.
 //
 
 import Foundation
@@ -39,7 +39,7 @@ final class LaunchesPresenter: LaunchesPresenterProtocol {
     func refresh() {
         guard let apiLaunchesDataArray = apiLaunchesDataArray else { return }
         let launches = apiLaunchesDataArray.filter { $0.rocket == rocketId }
-                    
+        
         view.showLaunchesViewData(
             LaunchesViewData(rocketName: rocketName, launcesApiData: launches)
         )

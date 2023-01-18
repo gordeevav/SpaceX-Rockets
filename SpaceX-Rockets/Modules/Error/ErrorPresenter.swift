@@ -2,7 +2,7 @@
 //  ErrorPresenter.swift
 //  SpaceX-Rockets
 //
-//  Created by Александр on 31.08.2022.
+//  Created by Aleksandr Gordeev on 31.08.2022.
 //
 
 import Foundation
@@ -19,7 +19,7 @@ final class ErrorPresenter: ErrorPresenterProtocol {
     }
     
     func closeErrorView() {
-        exit(0)
+        exit(EXIT_SUCCESS)
     }
     
     func showError(error: Error) {
